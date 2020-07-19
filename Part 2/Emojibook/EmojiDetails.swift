@@ -17,7 +17,7 @@ public struct EmojiDetails {
     self.emoji = emoji
     self.name = name
     self.description = description
-    self.url = URL(string: "emoji://\(name.filter { !$0.isWhitespace } )")
+    self.url = URL(string: "emoji://\(name.filter { !$0.isWhitespace })")
   }
 }
 
