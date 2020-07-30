@@ -15,11 +15,7 @@ struct CustomEmojiWidgetProvider: IntentTimelineProvider {
     with context: Context,
     completion: @escaping (CustomEmojiEntry) -> ()
   ) {
-    let entry =
-      CustomEmojiEntry(
-        date: Date(),
-        widgetFamily: context.family,
-        emojiDetails: EmojiProvider.random())
+    let entry = CustomEmojiEntry(date: Date(), emojiDetails: EmojiProvider.random())
     completion(entry)
   }
 
@@ -31,11 +27,7 @@ struct CustomEmojiWidgetProvider: IntentTimelineProvider {
     var entries = [CustomEmojiEntry]()
     if let emojiId = configuration.emoji?.identifier,
        let emojiDetails = lookupEmojiDetails(forId: emojiId) {
-      let entry = CustomEmojiEntry(
-        date: Date(),
-        widgetFamily: context.family,
-        emojiDetails: emojiDetails
-      )
+      let entry = CustomEmojiEntry(date: Date(), emojiDetails: emojiDetails)
       entries.append(entry)
     }
     let timeline = Timeline(entries: entries, policy: .never)
@@ -51,7 +43,6 @@ struct CustomEmojiWidgetProvider: IntentTimelineProvider {
 
 struct CustomEmojiEntry: TimelineEntry {
   public let date: Date
-  public let widgetFamily: WidgetFamily
   public let emojiDetails: EmojiDetails
 }
 
