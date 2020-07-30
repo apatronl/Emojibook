@@ -15,7 +15,14 @@ struct CustomEmojiWidgetProvider: IntentTimelineProvider {
     with context: Context,
     completion: @escaping (CustomEmojiEntry) -> ()
   ) {
-    let entry = CustomEmojiEntry(date: Date(), emojiDetails: EmojiProvider.random())
+    // Use a random emoji in the widget gallery.
+    if context.isPreview {
+      completion(CustomEmojiEntry(date: Date(), emojiDetails: EmojiProvider.random()))
+      return
+    }
+
+    let emojiDetails = lookupEmojiDetails(for: configuration)
+    let entry = CustomEmojiEntry(date: Date(), emojiDetails: emojiDetails)
     completion(entry)
   }
 
@@ -25,19 +32,22 @@ struct CustomEmojiWidgetProvider: IntentTimelineProvider {
     completion: @escaping (Timeline<CustomEmojiEntry>) -> ()
   ) {
     var entries = [CustomEmojiEntry]()
-    if let emojiId = configuration.emoji?.identifier,
-       let emojiDetails = lookupEmojiDetails(forId: emojiId) {
-      let entry = CustomEmojiEntry(date: Date(), emojiDetails: emojiDetails)
-      entries.append(entry)
-    }
+    let emojiDetails = lookupEmojiDetails(for: configuration)
+    let entry = CustomEmojiEntry(date: Date(), emojiDetails: emojiDetails)
+    entries.append(entry)
     let timeline = Timeline(entries: entries, policy: .never)
     completion(timeline)
   }
 
-  private func lookupEmojiDetails(forId id: String) -> EmojiDetails? {
-    return EmojiProvider.all().first(where: { emojiDetails in
-      emojiDetails.id == id
-    })
+  private func lookupEmojiDetails(for configuration: SelectEmojiIntent) -> EmojiDetails {
+    guard let emojiId = configuration.emoji?.identifier,
+       let emojiForConfig = EmojiProvider.all().first(where: { emoji in
+        emoji.id == emojiId
+       })
+    else {
+      return EmojiProvider.random()
+    }
+    return emojiForConfig
   }
 }
 
