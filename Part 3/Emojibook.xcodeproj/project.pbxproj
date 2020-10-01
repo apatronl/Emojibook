@@ -428,13 +428,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5U48XLFTQZ;
 				INFOPLIST_FILE = "Emojibook Intent/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "alep.Emojibook.Emojibook-Intent";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alep.Emojibook.Emojibook-Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -446,13 +447,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5U48XLFTQZ;
 				INFOPLIST_FILE = "Emojibook Intent/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "alep.Emojibook.Emojibook-Intent";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alep.Emojibook.Emojibook-Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -584,6 +586,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Emojibook/Preview Content\"";
+				DEVELOPMENT_TEAM = 5U48XLFTQZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Emojibook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -591,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = alep.Emojibook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alep.Emojibook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -606,6 +609,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Emojibook/Preview Content\"";
+				DEVELOPMENT_TEAM = 5U48XLFTQZ;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Emojibook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -613,7 +617,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = alep.Emojibook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alep.Emojibook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -626,13 +630,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5U48XLFTQZ;
 				INFOPLIST_FILE = "Emojibook Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "alep.Emojibook.Emojibook-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alep.Emojibook.Emojibook-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -646,13 +651,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5U48XLFTQZ;
 				INFOPLIST_FILE = "Emojibook Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "alep.Emojibook.Emojibook-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alep.Emojibook.Emojibook-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

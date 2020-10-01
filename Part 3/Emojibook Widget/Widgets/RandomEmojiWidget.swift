@@ -9,16 +9,18 @@ import SwiftUI
 import WidgetKit
 
 struct RandomEmojiWidgetProvider: TimelineProvider {
- 
-  public func snapshot(with context: Context, completion: @escaping (RandomEmojiEntry) -> ()) {
+  typealias Entry = RandomEmojiEntry
+
+  func placeholder(in context: Context) -> RandomEmojiEntry {
+    return RandomEmojiEntry(date: Date(), emojiDetails: EmojiProvider.random())
+  }
+  
+  func getSnapshot(in context: Context, completion: @escaping (RandomEmojiEntry) -> Void) {
     let entry = RandomEmojiEntry(date: Date(), emojiDetails: EmojiProvider.random())
     completion(entry)
   }
-
-  public func timeline(
-    with context: Context, 
-    completion: @escaping (Timeline<RandomEmojiEntry>) -> ()
-  ) {
+  
+  func getTimeline(in context: Context, completion: @escaping (Timeline<RandomEmojiEntry>) -> Void) {
     var entries: [RandomEmojiEntry] = []
 
     // Generate a timeline consisting of five entries an hour apart, starting from the current date.
@@ -53,9 +55,9 @@ struct RandomEmojiWidget: Widget {
   public var body: some WidgetConfiguration {
     StaticConfiguration(
       kind: kind,
-      provider: RandomEmojiWidgetProvider(),
-      placeholder: EmojiWidgetPlaceholderView()
-    ) { entry in
+      provider: RandomEmojiWidgetProvider()
+    ) {
+      entry in
       RandomEmojiWidgetEntryView(entry: entry)
     }
     .configurationDisplayName("Random Emoji Widget")

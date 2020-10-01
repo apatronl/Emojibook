@@ -9,12 +9,14 @@ import SwiftUI
 import WidgetKit
 
 struct CustomEmojiWidgetProvider: IntentTimelineProvider {
+  typealias Entry = CustomEmojiEntry
+  typealias Intent = SelectEmojiIntent
 
-  func snapshot(
-    for configuration: SelectEmojiIntent,
-    with context: Context,
-    completion: @escaping (CustomEmojiEntry) -> ()
-  ) {
+  func placeholder(in context: Context) -> CustomEmojiEntry {
+    CustomEmojiEntry(date: Date(), emojiDetails: EmojiProvider.random())
+  }
+  
+  func getSnapshot(for configuration: SelectEmojiIntent, in context: Context, completion: @escaping (CustomEmojiEntry) -> Void) {
     // Use a random emoji in the widget gallery.
     if context.isPreview {
       completion(CustomEmojiEntry(date: Date(), emojiDetails: EmojiProvider.random()))
@@ -25,12 +27,8 @@ struct CustomEmojiWidgetProvider: IntentTimelineProvider {
     let entry = CustomEmojiEntry(date: Date(), emojiDetails: emojiDetails)
     completion(entry)
   }
-
-  public func timeline(
-    for configuration: SelectEmojiIntent,
-    with context: Context,
-    completion: @escaping (Timeline<CustomEmojiEntry>) -> ()
-  ) {
+  
+  func getTimeline(for configuration: SelectEmojiIntent, in context: Context, completion: @escaping (Timeline<CustomEmojiEntry>) -> Void) {
     var entries = [CustomEmojiEntry]()
     let emojiDetails = lookupEmojiDetails(for: configuration)
     let entry = CustomEmojiEntry(date: Date(), emojiDetails: emojiDetails)
@@ -71,8 +69,7 @@ struct CustomEmojiWidget: Widget {
     IntentConfiguration(
       kind: kind,
       intent: SelectEmojiIntent.self,
-      provider: CustomEmojiWidgetProvider(),
-      placeholder: EmojiWidgetPlaceholderView()
+      provider: CustomEmojiWidgetProvider()
     ) { entry in
       CustomEmojiWidgetEntryView(entry: entry)
     }
