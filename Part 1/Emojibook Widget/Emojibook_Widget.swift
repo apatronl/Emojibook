@@ -9,6 +9,30 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
+    func placeholder(in context: Context) -> SimpleEntry {
+        return SimpleEntry (date: Date(), emojiDetails: EmojiDetails(emoji: " ", name: " " , description: " "))
+    }
+    
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+        let entry = SimpleEntry(date: Date(), emojiDetails: EmojiProvider.random())
+        completion(entry)
+    }
+    
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
+        var entries: [SimpleEntry] = []
+
+        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+        let currentDate = Date()
+        for hourOffset in 0 ..< 5 {
+          let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+          let entry = SimpleEntry(date: entryDate, emojiDetails: EmojiProvider.random())
+          entries.append(entry)
+        }
+
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
+    }
+    
   public typealias Entry = SimpleEntry
 
   public func snapshot(with context: Context, completion: @escaping (SimpleEntry) -> ()) {
@@ -58,8 +82,8 @@ struct Emojibook_Widget: Widget {
   public var body: some WidgetConfiguration {
     StaticConfiguration(
       kind: kind,
-      provider: Provider(),
-      placeholder: PlaceholderView()
+      provider: Provider()
+      
     ) { entry in
       Emojibook_WidgetEntryView(entry: entry)
     }
